@@ -1,0 +1,281 @@
+{
+  "places": [
+    {
+      "id": "1",
+      "name": "Marina Beach",
+      "lat": 13.0499,
+      "lng": 80.2824,
+      "crime": {
+        "violent": 15,
+        "property": 25,
+        "accident": 20
+      },
+      "infra": {
+        "cctv": 85,
+        "lighting": 80,
+        "policeDensity": 90
+      },
+      "popularity": 95,
+      "experience": 75,
+      "trend": 0.5,
+      "reviews": [
+        {
+          "id": "r1",
+          "author": "Priya K.",
+          "rating": 4,
+          "comment": "Very safe during daytime. Police presence is good. Well-lit in the evening.",
+          "tags": ["lit", "high police presence", "crowded", "safe daytime"],
+          "safetyRating": 4,
+          "cleanlinessRating": 3,
+          "policeResponseRating": 5,
+          "timestamp": "2025-11-10T14:30:00Z"
+        },
+        {
+          "id": "r2",
+          "author": "Raj M.",
+          "rating": 5,
+          "comment": "Great place for families. CCTV cameras everywhere. Feels very secure.",
+          "tags": ["family-friendly", "cctv", "crowded"],
+          "safetyRating": 5,
+          "cleanlinessRating": 4,
+          "policeResponseRating": 5,
+          "timestamp": "2025-11-08T10:15:00Z"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "T Nagar Commercial Area",
+      "lat": 13.0418,
+      "lng": 80.2341,
+      "crime": {
+        "violent": 10,
+        "property": 45,
+        "accident": 30
+      },
+      "infra": {
+        "cctv": 70,
+        "lighting": 75,
+        "policeDensity": 65
+      },
+      "popularity": 90,
+      "experience": 60,
+      "trend": 0.1,
+      "reviews": [
+        {
+          "id": "r3",
+          "author": "Anita S.",
+          "rating": 3,
+          "comment": "Busy area, watch your belongings. Pickpockets are common during peak hours.",
+          "tags": ["pickpockets", "crowded", "watch belongings"],
+          "safetyRating": 3,
+          "cleanlinessRating": 3,
+          "policeResponseRating": 3,
+          "timestamp": "2025-11-12T16:45:00Z"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Anna Nagar Park",
+      "lat": 13.0878,
+      "lng": 80.2088,
+      "crime": {
+        "violent": 5,
+        "property": 10,
+        "accident": 5
+      },
+      "infra": {
+        "cctv": 90,
+        "lighting": 95,
+        "policeDensity": 80
+      },
+      "popularity": 70,
+      "experience": 90,
+      "trend": 0.8,
+      "reviews": [
+        {
+          "id": "r4",
+          "author": "Kumar V.",
+          "rating": 5,
+          "comment": "Excellent for evening walks. Very well maintained and safe. Great lighting.",
+          "tags": ["lit", "safe at night", "peaceful", "well-maintained"],
+          "safetyRating": 5,
+          "cleanlinessRating": 5,
+          "policeResponseRating": 4,
+          "timestamp": "2025-11-11T18:20:00Z"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Velachery Railway Station",
+      "lat": 12.981,
+      "lng": 80.2209,
+      "crime": {
+        "violent": 20,
+        "property": 50,
+        "accident": 35
+      },
+      "infra": {
+        "cctv": 60,
+        "lighting": 50,
+        "policeDensity": 55
+      },
+      "popularity": 80,
+      "experience": 45,
+      "trend": -0.4,
+      "reviews": [
+        {
+          "id": "r5",
+          "author": "Lakshmi R.",
+          "rating": 2,
+          "comment": "Not safe at night. Poor lighting in some areas. Be very cautious.",
+          "tags": ["unsafe at night", "poor lighting", "isolated areas"],
+          "safetyRating": 2,
+          "cleanlinessRating": 2,
+          "policeResponseRating": 2,
+          "timestamp": "2025-11-09T21:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Phoenix Mall",
+      "lat": 13.0109,
+      "lng": 80.229,
+      "crime": {
+        "violent": 5,
+        "property": 15,
+        "accident": 10
+      },
+      "infra": {
+        "cctv": 95,
+        "lighting": 90,
+        "policeDensity": 85
+      },
+      "popularity": 88,
+      "experience": 85,
+      "trend": 0.6,
+      "reviews": [
+        {
+          "id": "r6",
+          "author": "Deepak N.",
+          "rating": 5,
+          "comment": "Very safe mall with excellent security. CCTV everywhere and good response time.",
+          "tags": [
+            "high police presence",
+            "cctv",
+            "safe at night",
+            "security guards"
+          ],
+          "safetyRating": 5,
+          "cleanlinessRating": 5,
+          "policeResponseRating": 5,
+          "timestamp": "2025-11-13T15:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Mylapore Temple Area",
+      "lat": 13.0339,
+      "lng": 80.2676,
+      "crime": {
+        "violent": 8,
+        "property": 30,
+        "accident": 15
+      },
+      "infra": {
+        "cctv": 75,
+        "lighting": 70,
+        "policeDensity": 75
+      },
+      "popularity": 85,
+      "experience": 70,
+      "trend": 0.3,
+      "reviews": [
+        {
+          "id": "r7",
+          "author": "Meena P.",
+          "rating": 4,
+          "comment": "Cultural area with good police presence. Crowded during festivals.",
+          "tags": ["crowded", "lit", "cultural", "high police presence"],
+          "safetyRating": 4,
+          "cleanlinessRating": 3,
+          "policeResponseRating": 4,
+          "timestamp": "2025-11-07T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Old Mahabalipuram Road IT Park",
+      "lat": 12.9141,
+      "lng": 80.227,
+      "crime": {
+        "violent": 12,
+        "property": 20,
+        "accident": 25
+      },
+      "infra": {
+        "cctv": 88,
+        "lighting": 82,
+        "policeDensity": 70
+      },
+      "popularity": 75,
+      "experience": 80,
+      "trend": 0.4,
+      "reviews": [
+        {
+          "id": "r8",
+          "author": "Arun K.",
+          "rating": 4,
+          "comment": "Modern IT area with good infrastructure. Safe for late-night commutes.",
+          "tags": ["safe at night", "well-lit", "cctv", "corporate area"],
+          "safetyRating": 4,
+          "cleanlinessRating": 4,
+          "policeResponseRating": 4,
+          "timestamp": "2025-11-06T20:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Tambaram East Residential",
+      "lat": 12.9249,
+      "lng": 80.1,
+      "crime": {
+        "violent": 35,
+        "property": 55,
+        "accident": 40
+      },
+      "infra": {
+        "cctv": 40,
+        "lighting": 45,
+        "policeDensity": 50
+      },
+      "popularity": 50,
+      "experience": 40,
+      "trend": -0.6,
+      "reviews": [
+        {
+          "id": "r9",
+          "author": "Sanjay T.",
+          "rating": 2,
+          "comment": "Needs better lighting and police patrol. Several theft incidents recently.",
+          "tags": [
+            "unsafe at night",
+            "theft",
+            "poor lighting",
+            "low police presence"
+          ],
+          "safetyRating": 2,
+          "cleanlinessRating": 2,
+          "policeResponseRating": 2,
+          "timestamp": "2025-11-05T22:00:00Z"
+        }
+      ]
+    }
+  ]
+}

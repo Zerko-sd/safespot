@@ -1,0 +1,44 @@
+{
+  "Mylapore": {
+    "coordinates": [
+      13.0245,
+      80.2626
+    ],
+    "incidents": [
+      {
+        "category": "violent_crime",
+        "summary": "Of course. Here is a breakdown of area-specific crime reports and safety implementations in Chennai from the past month (mid-October to mid-November 2025). 1. T. Nagar As a major commercial hub, this ",
+        "full_text": "Of course. Here is a breakdown of area-specific crime reports and safety implementations in Chennai from the past month (mid-October to mid-November 2025). 1. T. Nagar As a major commercial hub, this area saw significant police presence, especially during the pre-Deepavali shopping season. Crime Incidents • Vandalism on MTC Bus (Nov 12): Police began a search for a group of school students who reportedly shattered the windows of an MTC bus (Route 51T) in T. Nagar. The incident occurred after the bus crew tried to stop the students from traveling on the footboard. • Court Proceedings (Nov 13): \"Karukka\" Vinoth, who was previously convicted for a petrol bomb attack on a TASMAC outlet in T. Nagar, was brought to the Sixth Additional Sessions Court for trial proceedings in a related case. Safety Implementations • Intensive Deepavali Security (Mid-Oct): The Greater Chennai Police (GCP) deployed a massive security detail in T. Nagar to manage festive crowds. o Personnel: Over 400 police personnel, including Armed Reserve and Home Guards, were deployed. o Surveillance: 16 temporary watchtowers, police assistance booths, and two temporary control rooms were installed. o Technology: The area was monitored by 90 additional CCTV cameras and drone cameras for real-time crowd management and crime deterrence. • Traffic Management (Mid-Oct): The GCP announced special traffic diversions and designated additional parking areas to ease congestion. This included using the multilevel car park on Thanikachalam Salai and opening spaces at Somasundaram Ground. 2. Mylapore & Pattinapakkam This area saw police action against snatching and public nuisance. Crime Incidents",
+        "extracted_at": "2025-11-14T14:14:01.583812"
+      }
+    ]
+  },
+  "Velachery": {
+    "coordinates": [
+      12.9937,
+      80.223
+    ],
+    "incidents": [
+      {
+        "category": "violent_crime",
+        "summary": "• Snatching & Arrest (Nov 10-12): A couple on a two-wheeler was attacked on Dr. Radhakrishnan Salai by snatchers who stole their mobile phone. Following the complaint, the Marina police (who have juri",
+        "full_text": "• Snatching & Arrest (Nov 10-12): A couple on a two-wheeler was attacked on Dr. Radhakrishnan Salai by snatchers who stole their mobile phone. Following the complaint, the Marina police (who have jurisdiction) analyzed CCTV footage and arrested a 25-year-old suspect from Nochi Nagar. • Public Nuisance (Oct 21): The Mylapore police arrested a couple on Loop Road, Pattinapakkam (near Marina Beach). The pair was found in an inebriated state and was arrested for verbally abusing the police officers who were on night patrol. Safety Implementations • Active Night Patrols: The arrest on Loop Road was a direct result of active night patrolling in the coastal area, which acts as a deterrent to crime and disorderly conduct. • Festival Security (Mid-Oct): Mylapore was also included in the city-wide Deepavali security plan, with police assistance booths and drone surveillance used to monitor the crowded market areas. 3. Adyar A notable crime in this area was solved quickly thanks to technology. Crime Incident • Sexual Harassment & Arrest (Nov 10): A 25-year-old IT professional was arrested by police for sexually harassing a 50-year-old female sanitation worker on the Adyar flyover. The man allegedly flashed the woman from his bike. The incident was captured on a nearby vehicle's dashcam. Safety Implementations • Rapid Police Response: After the dashcam video of the incident circulated, police acted swiftly to track down and arrest the accused, demonstrating a quick response to public-provided evidence. 4. Velachery The primary safety concern in Velachery this month was not crime, but environmental and public safety. Crime Incident",
+        "extracted_at": "2025-11-14T14:14:01.583812"
+      }
+    ]
+  },
+  "Anna Nagar": {
+    "coordinates": [
+      13.0827,
+      80.2245
+    ],
+    "incidents": [
+      {
+        "category": "property_crime",
+        "summary": "• Firecracker Violations (Oct 21): Following Deepavali, the GCP registered numerous cases across the city, including in Velachery, against individuals who burst firecrackers outside the legally permit",
+        "full_text": "• Firecracker Violations (Oct 21): Following Deepavali, the GCP registered numerous cases across the city, including in Velachery, against individuals who burst firecrackers outside the legally permitted time slots. Safety Implementations (Public Safety Concern) • Critical Flood Safety Failure (Nov 3-4): The dominant safety story in Velachery has been the failure of safety implementations. o Resident Protests: Residents of Tansi Nagar, Velachery, held protests highlighting that crucial canals and waterways are severely blocked by encroachments, garbage, and debris. o Risk: This situation poses a direct and imminent flood risk to thousands of families, which residents described as a major failure of public safety by civic authorities ahead of the northeast monsoon. 5. Anna Nagar This area was quieter in terms of major reported incidents, with one specific theft noted. Crime Incident • Theft at TASMAC (Nov 4): Police are investigating a theft at a TASMAC shop in Anna Nagar West. Burglars broke into the shop and reportedly stole over 100 liquor bottles. Safety Implementations • No specific, new safety implementations (like the watchtowers in T. Nagar) were announced for Anna Nagar in the past month. The area is covered by the city's standard police patrolling and surveillance systems. General City-Wide Safety News • New \"Pink Patrol\" Vehicles (Nov 11): While the CM did flag off 80 new \"Pink Patrol\" vehicles for women's safety, it was clarified that these new vehicles are designated for surrounding cities like Tambaram and Avadi, not for the core Chennai city police limits. • Hoax Bomb Threats (Nov 11): The GCP confirmed it has been dealing with a wave of hoax bomb threat emails targeting various locations. All threats were investigated and found to be false.",
+        "extracted_at": "2025-11-14T14:14:01.583812"
+      }
+    ]
+  }
+}

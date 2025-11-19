@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SafeSpot API Tester</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+      .header p {
+        opacity: 0.9;
+      }
+      .content {
+        padding: 30px;
+      }
+      .test-section {
+        margin-bottom: 30px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .test-header {
+        background: #f7fafc;
+        padding: 15px 20px;
+        border-bottom: 2px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .test-header h3 {
+        color: #2d3748;
+        font-size: 1.2rem;
+      }
+      .test-body {
+        padding: 20px;
+      }
+      .test-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        align-items: center;
+      }
+      .test-row input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .test-row input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+      button {
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s;
+      }
+      button:hover {
+        transform: translateY(-2px);
+      }
+      button:active {
+        transform: translateY(0);
+      }
+      .response {
+        margin-top: 15px;
+        padding: 15px;
+        background: #f7fafc;
+        border-radius: 6px;
+        max-height: 400px;
+        overflow-y: auto;
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .status.success {
+        background: #c6f6d5;
+        color: #22543d;
+      }
+      .status.error {
+        background: #fed7d7;
+        color: #742a2a;
+      }
+      .status.pending {
+        background: #feebc8;
+        color: #7c2d12;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+      }
+      .quick-test {
+        padding: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .quick-test:hover {
+        transform: translateY(-3px);
+      }
+      .quick-test h4 {
+        margin-bottom: 5px;
+      }
+      .quick-test p {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🛡️ SafeSpot API Tester</h1>
+        <p>Test all API endpoints interactively</p>
+      </div>
+
+      <div class="content">
+        <!-- Quick Tests -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>⚡ Quick Tests</h3>
+          </div>
+          <div class="test-body">
+            <div class="grid">
+              <div class="quick-test" onclick="testGetAllPlaces()">
+                <h4>📍 Get All Places</h4>
+                <p>Fetch all available places</p>
+              </div>
+              <div class="quick-test" onclick="testNearbyPlaces()">
+                <h4>📡 Nearby Places</h4>
+                <p>Find places within 5km</p>
+              </div>
+              <div class="quick-test" onclick="testTrendingPlaces()">
+                <h4>📈 Trending Places</h4>
+                <p>Show trending locations</p>
+              </div>
+              <div class="quick-test" onclick="testHighSafety()">
+                <h4>✅ High Safety Areas</h4>
+                <p>Places with score > 70</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Get Places -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>GET /api/places</h3>
+            <span class="status pending" id="status-places">Ready</span>
+          </div>
+          <div class="test-body">
+            <div class="test-row">
+              <input
+                type="number"
+                id="lat"
+                placeholder="Latitude (e.g., 13.0827)"
+                step="0.0001" />
+              <input
+                type="number"
+                id="lng"
+                placeholder="Longitude (e.g., 80.2707)"
+                step="0.0001" />
+              <input
+                type="number"
+                id="radius"
+                placeholder="Radius (km)"
+                value="5" />
+            </div>
+            <div class="test-row">
+              <input
+                type="number"
+                id="minSafety"
+                placeholder="Min Safety Score"
+                min="0"
+                max="100" />
+              <input
+                type="number"
+                id="maxSafety"
+                placeholder="Max Safety Score"
+                min="0"
+                max="100" />
+              <select
+                id="sortBy"
+                style="
+                  flex: 1;
+                  padding: 10px 15px;
+                  border: 2px solid #e2e8f0;
+                  border-radius: 6px;
+                ">
+                <option value="safety_score">Safety Score</option>
+                <option value="elo_score">Elo Score</option>
+                <option value="popularity_score">Popularity</option>
+                <option value="trend_score">Trend</option>
+              </select>
+            </div>
+            <button onclick="testPlacesAPI()">🚀 Test API</button>
+            <div class="response" id="response-places"></div>
+          </div>
+        </div>
+
+        <!-- Get Place Details -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>GET /api/places/:id</h3>
+            <span class="status pending" id="status-place-detail">Ready</span>
+          </div>
+          <div class="test-body">
+            <div class="test-row">
+              <input
+                type="text"
+                id="placeId"
+                placeholder="Place ID (e.g., place1)"
+                value="place1" />
+              <select
+                id="include"
+                style="
+                  flex: 1;
+                  padding: 10px 15px;
+                  border: 2px solid #e2e8f0;
+                  border-radius: 6px;
+                ">
+                <option value="">Basic Info</option>
+                <option value="safety">Include Safety</option>
+                <option value="reviews">Include Reviews</option>
+                <option value="all">Include All</option>
+              </select>
+            </div>
+            <button onclick="testPlaceDetailAPI()">🚀 Test API</button>
+            <div class="response" id="response-place-detail"></div>
+          </div>
+        </div>
+
+        <!-- Get Reviews -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>GET /api/reviews</h3>
+            <span class="status pending" id="status-reviews-get">Ready</span>
+          </div>
+          <div class="test-body">
+            <div class="test-row">
+              <input
+                type="text"
+                id="reviewPlaceId"
+                placeholder="Place ID"
+                value="place1" />
+              <input
+                type="number"
+                id="reviewLimit"
+                placeholder="Limit"
+                value="10" />
+            </div>
+            <button onclick="testGetReviews()">🚀 Test API</button>
+            <div class="response" id="response-reviews-get"></div>
+          </div>
+        </div>
+
+        <!-- Create Review -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>POST /api/reviews</h3>
+            <span class="status pending" id="status-reviews-post">Ready</span>
+          </div>
+          <div class="test-body">
+            <div class="test-row">
+              <input
+                type="text"
+                id="newReviewPlaceId"
+                placeholder="Place ID"
+                value="place1" />
+              <input
+                type="number"
+                id="safetyRating"
+                placeholder="Safety Rating (1-5)"
+                min="1"
+                max="5"
+                value="4" />
+            </div>
+            <div class="test-row">
+              <input type="text" id="reviewText" placeholder="Review text" />
+              <input
+                type="text"
+                id="tags"
+                placeholder="Tags (comma-separated)" />
+            </div>
+            <button onclick="testCreateReview()">🚀 Create Review</button>
+            <div class="response" id="response-reviews-post"></div>
+          </div>
+        </div>
+
+        <!-- Nearby Places -->
+        <div class="test-section">
+          <div class="test-header">
+            <h3>GET /api/nearby</h3>
+            <span class="status pending" id="status-nearby">Ready</span>
+          </div>
+          <div class="test-body">
+            <div class="test-row">
+              <input
+                type="number"
+                id="nearbyLat"
+                placeholder="Latitude"
+                value="13.0827"
+                step="0.0001" />
+              <input
+                type="number"
+                id="nearbyLng"
+                placeholder="Longitude"
+                value="80.2707"
+                step="0.0001" />
+              <input
+                type="number"
+                id="nearbyRadius"
+                placeholder="Radius (km)"
+                value="5" />
+            </div>
+            <button onclick="testNearbyAPI()">🚀 Test API</button>
+            <div class="response" id="response-nearby"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const BASE_URL = "http://localhost:3000/api";
+
+      async function makeRequest(url, method = "GET", body = null) {
+        const options = {
+          method,
+          headers: { "Content-Type": "application/json" },
+        };
+        if (body) options.body = JSON.stringify(body);
+
+        const response = await fetch(url, options);
+        const data = await response.json();
+        return { status: response.status, data };
+      }
+
+      function updateStatus(id, success, message = "") {
+        const el = document.getElementById(id);
+        el.className = `status ${success ? "success" : "error"}`;
+        el.textContent = message || (success ? "Success" : "Error");
+      }
+
+      function displayResponse(id, response) {
+        document.getElementById(id).textContent = JSON.stringify(
+          response,
+          null,
+          2
+        );
+      }
+
+      async function testPlacesAPI() {
+        const lat = document.getElementById("lat").value;
+        const lng = document.getElementById("lng").value;
+        const radius = document.getElementById("radius").value;
+        const minSafety = document.getElementById("minSafety").value;
+        const maxSafety = document.getElementById("maxSafety").value;
+        const sortBy = document.getElementById("sortBy").value;
+
+        const params = new URLSearchParams();
+        if (lat) params.append("lat", lat);
+        if (lng) params.append("lng", lng);
+        if (radius) params.append("radius", radius);
+        if (minSafety) params.append("minSafetyScore", minSafety);
+        if (maxSafety) params.append("maxSafetyScore", maxSafety);
+        params.append("sortBy", sortBy);
+
+        try {
+          const { status, data } = await makeRequest(
+            `${BASE_URL}/places?${params}`
+          );
+          updateStatus(
+            "status-places",
+            status === 200,
+            `${status} - ${data.count || 0} places`
+          );
+          displayResponse("response-places", data);
+        } catch (error) {
+          updateStatus("status-places", false);
+          displayResponse("response-places", { error: error.message });
+        }
+      }
+
+      async function testPlaceDetailAPI() {
+        const placeId = document.getElementById("placeId").value;
+        const include = document.getElementById("include").value;
+        const params = include ? `?include=${include}` : "";
+
+        try {
+          const { status, data } = await makeRequest(
+            `${BASE_URL}/places/${placeId}${params}`
+          );
+          updateStatus("status-place-detail", status === 200);
+          displayResponse("response-place-detail", data);
+        } catch (error) {
+          updateStatus("status-place-detail", false);
+          displayResponse("response-place-detail", { error: error.message });
+        }
+      }
+
+      async function testGetReviews() {
+        const placeId = document.getElementById("reviewPlaceId").value;
+        const limit = document.getElementById("reviewLimit").value;
+        const params = `?place_id=${placeId}&limit=${limit}`;
+
+        try {
+          const { status, data } = await makeRequest(
+            `${BASE_URL}/reviews${params}`
+          );
+          updateStatus("status-reviews-get", status === 200);
+          displayResponse("response-reviews-get", data);
+        } catch (error) {
+          updateStatus("status-reviews-get", false);
+          displayResponse("response-reviews-get", { error: error.message });
+        }
+      }
+
+      async function testCreateReview() {
+        const placeId = document.getElementById("newReviewPlaceId").value;
+        const safetyRating = parseInt(
+          document.getElementById("safetyRating").value
+        );
+        const reviewText = document.getElementById("reviewText").value;
+        const tags = document
+          .getElementById("tags")
+          .value.split(",")
+          .map((t) => t.trim())
+          .filter((t) => t);
+
+        const body = {
+          place_id: placeId,
+          safety_rating: safetyRating,
+          review_text: reviewText,
+          tags,
+        };
+
+        try {
+          const { status, data } = await makeRequest(
+            `${BASE_URL}/reviews`,
+            "POST",
+            body
+          );
+          updateStatus("status-reviews-post", status === 201);
+          displayResponse("response-reviews-post", data);
+        } catch (error) {
+          updateStatus("status-reviews-post", false);
+          displayResponse("response-reviews-post", { error: error.message });
+        }
+      }
+
+      async function testNearbyAPI() {
+        const lat = document.getElementById("nearbyLat").value;
+        const lng = document.getElementById("nearbyLng").value;
+        const radius = document.getElementById("nearbyRadius").value;
+        const params = `?lat=${lat}&lng=${lng}&radius=${radius}`;
+
+        try {
+          const { status, data } = await makeRequest(
+            `${BASE_URL}/nearby${params}`
+          );
+          updateStatus("status-nearby", status === 200);
+          displayResponse("response-nearby", data);
+        } catch (error) {
+          updateStatus("status-nearby", false);
+          displayResponse("response-nearby", { error: error.message });
+        }
+      }
+
+      // Quick test functions
+      async function testGetAllPlaces() {
+        try {
+          const { data } = await makeRequest(`${BASE_URL}/places`);
+          alert(
+            `✅ Found ${data.count} places!\n\nFirst place: ${
+              data.data[0]?.name || "N/A"
+            }`
+          );
+        } catch (error) {
+          alert(`❌ Error: ${error.message}`);
+        }
+      }
+
+      async function testNearbyPlaces() {
+        try {
+          const { data } = await makeRequest(
+            `${BASE_URL}/nearby?lat=13.0827&lng=80.2707&radius=5`
+          );
+          alert(`✅ Found ${data.meta.count} nearby places within 5km!`);
+        } catch (error) {
+          alert(`❌ Error: ${error.message}`);
+        }
+      }
+
+      async function testTrendingPlaces() {
+        try {
+          const { data } = await makeRequest(
+            `${BASE_URL}/places?trending=true`
+          );
+          alert(`✅ Found ${data.count} trending places!`);
+        } catch (error) {
+          alert(`❌ Error: ${error.message}`);
+        }
+      }
+
+      async function testHighSafety() {
+        try {
+          const { data } = await makeRequest(
+            `${BASE_URL}/places?minSafetyScore=70`
+          );
+          alert(`✅ Found ${data.count} high-safety places (score > 70)!`);
+        } catch (error) {
+          alert(`❌ Error: ${error.message}`);
+        }
+      }
+    </script>
+  </body>
+</html>
